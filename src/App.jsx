@@ -1,26 +1,30 @@
-import { useState } from 'react'
+import Header from './components/Header'
+import Hero from './components/Hero'
+import Gallery from './components/Gallery'
+import About from './components/About'
+import Contact from './components/Contact'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const profile = {
+    username: 'usernamekamu',
+    name: 'Nama Kamu',
+    bio: 'Fotografer | Kreator Konten | Cerita visual setiap hari'
+  }
+
+  const gallery = []
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
+    <div className="min-h-screen bg-white text-gray-900">
+      <Header />
+      <main>
+        <Hero {...profile} />
+        <Gallery items={gallery} />
+        <About name={profile.name} />
+        <Contact />
+      </main>
+      <footer className="py-10 text-center text-sm text-gray-500">
+        © {new Date().getFullYear()} {profile.name}. Dibuat dengan cinta.
+      </footer>
     </div>
   )
 }
